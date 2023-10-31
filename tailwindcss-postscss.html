@@ -1,0 +1,7 @@
+{{/*  The intial style sheet is still called *.css.  Import your *.SCSS  from here */}}
+
+{{ $time := now }} 
+{{ $style := resources.Get "css/style.css" | toCSS | postCSS (dict "config" "assets/css/postcss.config.js") | resources.ExecuteAsTemplate (printf "style.%s.css" $time) $time }} 
+
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+<h1>HELLO</h1>
